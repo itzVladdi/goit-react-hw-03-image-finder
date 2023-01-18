@@ -76,15 +76,17 @@ export class App extends Component {
       modalImgTags,
       totalHits,
       imagePerPage,
+      error,
     } = this.state;
     return (
       <div className={css.App}>
         <Searchbar handleSubmit={this.handleSubmit} />
         {isEmpty && (
-          <p>
+          <p style={{ textAlign: 'center' }}>
             Sorry, we couldn't find a match for your request - <b>"{query}"</b>.
           </p>
         )}
+        {error && <p style={{ textAlign: 'center' }}>{error}</p>}
         {this.state.isLoading && <Loader />}
         {photos.length > 0 && (
           <ImageGallery>
